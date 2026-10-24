@@ -22,7 +22,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Run test suite
         run: npm test
-      - name: Self-audit: vet the example servers
+      - name: "Self-audit: vet the example servers"
         run: |
           node bin/mcp-flow.js run examples/echo/flows/smoke.flow.json -- node examples/echo/server.js
           node bin/mcp-flow.js run examples/broken/flows/conformance.flow.json
