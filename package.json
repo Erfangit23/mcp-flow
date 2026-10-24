@@ -54,7 +54,7 @@
   },
   "homepage": "https://github.com/Erfangit23/mcp-flow#readme",
   "scripts": {
-    "test": "node --test \"test/*.test.js\"",
-    "test:quiet": "node --test --test-reporter=dot \"test/*.test.js\""
+    "test": "node --test",
+    "test:quiet": "node --test --test-reporter=dot"
   }
 }
