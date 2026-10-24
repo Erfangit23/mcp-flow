@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }}, Node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Run test suite
+        run: npm test
+      - name: Self-audit: vet the example servers
+        run: |
+          node bin/mcp-flow.js run examples/echo/flows/smoke.flow.json -- node examples/echo/server.js
+          node bin/mcp-flow.js run examples/broken/flows/conformance.flow.json
+          node bin/mcp-flow.js validate examples/echo/flows/smoke.flow.json examples/echo/flows-demo/failing.flow.json
