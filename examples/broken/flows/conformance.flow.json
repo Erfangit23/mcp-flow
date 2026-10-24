@@ -1,0 +1,19 @@
+{
+  "name": "broken server conformance",
+  "description": "Passes functionally (echo works) while surfacing protocol-violation warnings — proves mcp-flow reports what silent clients swallow.",
+  "server": { "command": "node", "args": ["examples/broken/server.js"] },
+  "steps": [
+    {
+      "call": "echo",
+      "args": { "text": "ping" },
+      "expect": {
+        "ok": true,
+        "equals": { "result.content.0.text": "Echo: ping" }
+      }
+    },
+    {
+      "call": "stutter",
+      "expect": { "ok": true }
+    }
+  ]
+}

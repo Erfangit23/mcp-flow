@@ -1,0 +1,19 @@
+{
+  "name": "intentional failure demo",
+  "description": "Fails on purpose to show what a failure looks like in the report (and that the exit code is non-zero).",
+  "steps": [
+    {
+      "call": "echo",
+      "args": { "text": "this one is fine" },
+      "expect": { "ok": true }
+    },
+    {
+      "call": "echo",
+      "args": { "text": "but this is not" },
+      "expect": {
+        "ok": true,
+        "equals": { "result.content.0.text": "Echo: something else entirely" }
+      }
+    }
+  ]
+}
