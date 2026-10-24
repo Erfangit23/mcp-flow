@@ -1,0 +1,60 @@
+{
+  "name": "mcp-flow",
+  "version": "0.1.0",
+  "description": "Postman for MCP servers. Write scripted flows, chain tool calls, assert responses, gate your CI. Zero dependencies, deterministic, no LLM required.",
+  "license": "MIT",
+  "author": "Erfan Rahimi <Erfangit23>",
+  "type": "module",
+  "bin": {
+    "mcp-flow": "bin/mcp-flow.js"
+  },
+  "main": "./src/runner.js",
+  "exports": {
+    ".": "./src/runner.js",
+    "./client": "./src/client.js",
+    "./flows/assert": "./src/flows/assert.js",
+    "./flows/parse": "./src/flows/parse.js",
+    "./reporters": "./src/report/index.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "docs/",
+    "examples/",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "testing",
+    "integration-testing",
+    "e2e",
+    "cli",
+    "ai",
+    "agents",
+    "llm",
+    "claude",
+    "cursor",
+    "assertions",
+    "ci",
+    "zero-dependency",
+    "json-rpc"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Erfangit23/mcp-flow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Erfangit23/mcp-flow/issues"
+  },
+  "homepage": "https://github.com/Erfangit23/mcp-flow#readme",
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "test:quiet": "node --test --test-reporter=dot \"test/*.test.js\""
+  }
+}
